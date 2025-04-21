@@ -1,10 +1,7 @@
-
 #pragma once
+
 #include <iostream>
-
-class ITake { virtual void use() = 0; };
-
-class IAttack { virtual void attack() = 0; };
+#include "Interface.h"
 
 class Bow : public ITake, public IAttack
 {
@@ -40,6 +37,6 @@ class Player
 {
 	std::string name;
 public:
-	Player& use(std::shared_ptr<ITake>takable_item);
-	Player& attack(std::shared_ptr<IAttack>attack_item);
+	Player& take(std::shared_ptr<ITake>takable_item);
+	Player& damage(std::shared_ptr<IAttack>attack_item);
 };
