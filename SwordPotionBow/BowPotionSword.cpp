@@ -2,7 +2,7 @@
 
 Bow::Bow(std::string name) : name{name}{}
 
-Potion::Potion(std::string name) : name{name}{}
+Potion::Potion(std::string name) : name{ name }, is_pomegrate{static_cast<bool>(rand()%2)} {}
 
 Sword::Sword(std::string name) : name{name}{}
 
@@ -16,11 +16,6 @@ void Bow::attack()
 	std::cout << "\nYou is attacked of bow: " << name << std::endl;
 }
 
-int Bow::getHealth()
-{
-	return health;
-}
-
 void Sword::use()
 {
 	std::cout << "\nYou selected sword: " << name << std::endl;
@@ -31,11 +26,6 @@ void Sword::attack()
 	std::cout << "\nYou is attacked of sword: " << name << std::endl;
 }
 
-int Sword::getHealth()
-{
-	return health;
-}
-
 void Potion::use()
 {
 	std::cout << "\nYou selected potion: " << name << std::endl;
@@ -43,12 +33,7 @@ void Potion::use()
 
 void Potion::attack()
 {
-	std::cout << "\nYou is attacked of potion: " << name << std::endl;
-}
-
-int Potion::getHealth()
-{
-	return health;
+	std::cout << "\nYou is attacked of potion: " << name << ", helth: " << std::endl;
 }
 
 Player::Player() : health{100} {}
@@ -63,7 +48,14 @@ Player& Player::damage(std::shared_ptr<IAttack>attack_item)
 	attack_item->attack(); return *this;
 }
 
-int Player::getHealth()
+int Player::getHealth() const
 {
 	return health;
+}
+
+Player& Player::setHealth(int _damage)
+{
+	if (getHealth() > 0) health -= _damage;
+	if (getHealth() < 0) health = 0;
+	return *this;
 }
