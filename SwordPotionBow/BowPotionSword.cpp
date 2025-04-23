@@ -8,54 +8,69 @@ Sword::Sword(std::string name) : name{name}{}
 
 void Bow::use()
 {
-	std::cout << "\nYou selected bow: " << name << std::endl;
+	std::cout << "\nВы подобрали лук варенный из: " << name << std::endl;
 }
 
-void Bow::attack() 
+void Bow::dealDamage() 
 {
-	std::cout << "\nYou is attacked of bow: " << name << std::endl;
+	std::cout << "\nВы атакуете: " << name << std::endl;
 }
 
 void Sword::use()
 {
-	std::cout << "\nYou selected sword: " << name << std::endl;
+	std::cout << "\nВы подобрали меч: " << name << std::endl;
 }
 
-void Sword::attack()
+void Sword::dealDamage()
 {
-	std::cout << "\nYou is attacked of sword: " << name << std::endl;
+	std::cout << "\nМощным взмахом мечом вы атакуете: " << name << std::endl;
 }
 
 void Potion::use()
 {
-	std::cout << "\nYou selected potion: " << name << std::endl;
+	std::cout << "\nЗелье варенное из: " << name << std::endl;
 }
 
-void Potion::attack()
+void Potion::dealDamage()
 {
-	std::cout << "\nYou is attacked of potion: " << name << ", helth: " << std::endl;
+	std::cout << "\nЗельеварка активировалась на: " << name << ", со здоровьем: " << std::endl;
 }
 
-Player::Player() : health{100} {}
+Player::Player() : health_player{100} {}
+
+void Player::use()
+{
+	std::cout << "\nИгрок со здоровьем "<< getHealth() << " не одобряет ваши действия и не подбирается" << std::endl;
+}
 
 Player& Player::take(std::shared_ptr<ITake>takable_item)
 {
 	takable_item->use(); return *this;
 }
 
-Player& Player::damage(std::shared_ptr<IAttack>attack_item)
+Player& Player::damage(std::shared_ptr<IDealDamage>attack_item)
 {
-	attack_item->attack(); return *this;
+	attack_item->dealDamage(); return *this;
 }
 
 int Player::getHealth() const
 {
-	return health;
+	return health_player;
 }
 
-Player& Player::setHealth(int _damage)
+void Player::dealDamage()
 {
-	if (getHealth() > 0) health -= _damage;
-	if (getHealth() < 0) health = 0;
-	return *this;
+	std::cout << "тут пока ничего нет" << std::endl;
 }
+
+Player& Player::takeDamageOfEnemy(std::shared_ptr<ITakeDamage> dmg)
+{
+	dmg->takeDamage(); return *this;
+}
+
+//Player& Player::setHealth(int _damage)
+//{
+//	if (getHealth() > 0) health -= _damage;
+//	if (getHealth() < 0) health = 0;
+//	return *this;
+//}
