@@ -43,12 +43,8 @@ public:
 	Player();
 	void use() override;
 	void dealDamage() override;
-	//void health() override;
-	//void takeDamage() override;
 	Player& take(std::shared_ptr<ITake> takable_item);
 	Player& damage(std::shared_ptr<IDealDamage> attack_item);
-	//Player& takeDamageOfEnemy(std::shared_ptr<ITakeDamage> dmg);
-	//Player& setHealth(std::shared_ptr<IHealth> health_player);
+
 	int getHealth() const;
-	//Player& setHealth(int _damage);
 };

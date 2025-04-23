@@ -62,15 +62,3 @@ void Player::dealDamage()
 {
 	std::cout << "тут пока ничего нет" << std::endl;
 }
-
-//Player& Player::takeDamageOfEnemy(std::shared_ptr<ITakeDamage> dmg)
-//{
-//	dmg->takeDamage(); return *this;
-//}
-
-//Player& Player::setHealth(int _damage)
-//{
-//	if (getHealth() > 0) health -= _damage;
-//	if (getHealth() < 0) health = 0;
-//	return *this;
-//}

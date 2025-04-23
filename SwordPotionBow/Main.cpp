@@ -11,22 +11,13 @@ int main()
 	std::shared_ptr<Sword>sword1 = std::make_shared<Sword>("Платиновый");
 	std::shared_ptr<Potion>potion1 = std::make_shared<Potion>("Невидимый");
 	
-	
-	//std::shared_ptr<Player>enemy_player = std::make_shared<Player>();
-
-
 	std::shared_ptr<Bow>bow2 = std::make_shared<Bow>("Вражий золтой");
 	std::shared_ptr<Sword>sword2 = std::make_shared<Sword>("Вражий стар платинум");
 	std::shared_ptr<Potion>potion2 = std::make_shared<Potion>("Вражья невидимость");
 
-	//std::cout << "Player with health: " << player.getHealth() << std::endl;
-	
-
 	player.take(bow1);
 	player.take(sword1);
 	player.take(potion1);
-
-	//player.take();
 
 	player.damage(bow2);
 	player.damage(sword2);
