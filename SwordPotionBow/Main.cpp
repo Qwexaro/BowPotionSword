@@ -28,9 +28,9 @@ int main()
 
 	//player.take();
 
-	/*player.damage(bow2);
+	player.damage(bow2);
 	player.damage(sword2);
-	player.damage(potion2);*/
+	player.damage(potion2);
 
 	return 0;
 }

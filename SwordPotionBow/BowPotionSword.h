@@ -35,7 +35,7 @@ public:
 };
 
 
-class Player : public ITake, public IDealDamage, public IHealth, public ITakeDamage
+class Player : public ITake, public IDealDamage
 {
 	std::string name;
 	int health_player;
@@ -47,7 +47,7 @@ public:
 	//void takeDamage() override;
 	Player& take(std::shared_ptr<ITake> takable_item);
 	Player& damage(std::shared_ptr<IDealDamage> attack_item);
-	Player& takeDamageOfEnemy(std::shared_ptr<ITakeDamage> dmg);
+	//Player& takeDamageOfEnemy(std::shared_ptr<ITakeDamage> dmg);
 	//Player& setHealth(std::shared_ptr<IHealth> health_player);
 	int getHealth() const;
 	//Player& setHealth(int _damage);

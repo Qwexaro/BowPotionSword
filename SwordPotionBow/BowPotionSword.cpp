@@ -36,7 +36,7 @@ void Potion::dealDamage()
 	std::cout << "\nЗельеварка активировалась на: " << name << ", со здоровьем: " << std::endl;
 }
 
-Player::Player() : health_player{100} {}
+Player::Player() : name{"sanya"}, health_player{100} {}
 
 void Player::use()
 {
@@ -63,10 +63,10 @@ void Player::dealDamage()
 	std::cout << "тут пока ничего нет" << std::endl;
 }
 
-Player& Player::takeDamageOfEnemy(std::shared_ptr<ITakeDamage> dmg)
-{
-	dmg->takeDamage(); return *this;
-}
+//Player& Player::takeDamageOfEnemy(std::shared_ptr<ITakeDamage> dmg)
+//{
+//	dmg->takeDamage(); return *this;
+//}
 
 //Player& Player::setHealth(int _damage)
 //{
