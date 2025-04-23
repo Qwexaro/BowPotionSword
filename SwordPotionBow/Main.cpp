@@ -23,5 +23,8 @@ int main()
 	player.damage(sword2);
 	player.damage(potion2);
 
+
+	// player.take(sword1).damage(player2);
+	// sword.damage(player2);
 	return 0;
 }
