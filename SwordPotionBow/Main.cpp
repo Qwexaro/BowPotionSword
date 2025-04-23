@@ -25,7 +25,7 @@ int main()
 
 	// player.take(sword1).damage(player2); не подбирает а держит
 	// sword.damage(player2); триггеры?
-	// player.damage(Sword(player2));
+	// player.damage(Sword(player2)); по факту попало под меч
 
 	return 0;
 }
