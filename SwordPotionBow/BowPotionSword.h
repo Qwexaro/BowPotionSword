@@ -11,6 +11,7 @@ public:
 	void use() override;
 	void dealDamage() override;
 	void getDamage() override;
+	void getStatus() const override;
 };
 
 
@@ -23,6 +24,7 @@ public:
 	void use() override;
 	void dealDamage() override;
 	void getDamage() override;
+	void getStatus() const override;
 };
 
 
@@ -35,10 +37,11 @@ public:
 	void use() override;
 	void dealDamage() override;
 	void getDamage() override;
+	void getStatus() const override;
 };
 
 
-class Player : public ITake, public IDealDamage
+class Player : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
 	int health_player;
@@ -46,7 +49,8 @@ public:
 	Player();
 	void use() override;
 	void dealDamage() override;
-//	void getDamage() override;
+	void getDamage() override;
+	void getStatus() const override;
 
 	Player& take(std::shared_ptr<ITake> takable_item);
 	Player& damage(std::shared_ptr<IDealDamage> attack_item, std::shared_ptr<IGetDamage> get_dmg_item);

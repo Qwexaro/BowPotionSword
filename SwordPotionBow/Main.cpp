@@ -7,6 +7,7 @@ int main()
 	srand(static_cast<int>(time(0)));
 	Player player;
 	
+	std::shared_ptr<Player>enemy = std::make_shared<Player>();
 	std::shared_ptr<Bow>bow1 = std::make_shared<Bow>("Золотой");
 	std::shared_ptr<Sword>sword1 = std::make_shared<Sword>("Платиновый");
 	std::shared_ptr<Potion>potion1 = std::make_shared<Potion>("Невидимый");
@@ -22,6 +23,9 @@ int main()
 	player.damage(bow1, sword2);
 	player.damage(sword1, bow2);
 	player.damage(potion1, potion2);
+
+	player.take(enemy);
+	player.damage(sword1, enemy);
 
 	// player.take(sword1).damage(player2); не подбирает а держит
 	// sword.damage(player2); триггеры?
