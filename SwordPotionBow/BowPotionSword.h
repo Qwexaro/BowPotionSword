@@ -15,6 +15,8 @@ public:
 	void dealDamage() override;
 	void getDamage() override;
 	void getStatus() const override;
+
+	bool isBroken() const { return !can_take; } // Метод для проверки, сломан ли лук
 };
 
 
@@ -29,6 +31,8 @@ public:
 	void dealDamage() override;
 	void getDamage() override;
 	void getStatus() const override;
+
+	bool isBroken() const { return !can_take; } // Метод для проверки, сломан ли меч
 };
 
 
@@ -43,6 +47,8 @@ public:
 	void dealDamage() override;
 	void getDamage() override;
 	void getStatus() const override;
+
+	bool isBroken() const { return !can_take; } // Метод для проверки, сломано ли зелье
 };
 
 
@@ -53,9 +59,7 @@ public:
 	Player();
 	Player(std::string name);
 	void use() override;
-	void dealDamage() override;
-	void getStatus() const;
-
+	
 	Player& take(std::shared_ptr<ITake> takable_item);
 	Player& damage(std::shared_ptr<IDealDamage> attack_item, std::shared_ptr<IGetDamage> get_dmg_item);
 };
