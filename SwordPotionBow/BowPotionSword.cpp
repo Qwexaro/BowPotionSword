@@ -6,12 +6,27 @@ Potion::Potion(std::string name) : name{ name }, is_pomegrate{static_cast<bool>(
 
 Sword::Sword(std::string name) : name{name}{}
 
+void Bow::getDamage()
+{
+	std::cout << "\nлук сломался";
+}
+
+void Sword::getDamage()
+{
+	std::cout << "\nМечь сломался.";
+}
+
+void Potion::getDamage()
+{
+	std::cout << "\nЗелье разлетелось на осколки.";
+}
+
 void Bow::use()
 {
 	std::cout << "\nВы подобрали лук варенный из: " << name << std::endl;
 }
 
-void Bow::dealDamage() 
+void Bow::dealDamage()
 {
 	std::cout << "\nВы атакуете: " << name << std::endl;
 }
@@ -48,9 +63,11 @@ Player& Player::take(std::shared_ptr<ITake>takable_item)
 	takable_item->use(); return *this;
 }
 
-Player& Player::damage(std::shared_ptr<IDealDamage>attack_item)
+Player& Player::damage(std::shared_ptr<IDealDamage> attack_item, std::shared_ptr<IGetDamage> get_dmg_item)
 {
-	attack_item->dealDamage(); return *this;
+	attack_item->dealDamage();
+	get_dmg_item->getDamage();
+	return *this;
 }
 
 int Player::getHealth() const

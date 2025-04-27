@@ -19,9 +19,9 @@ int main()
 	player.take(sword1);
 	player.take(potion1);
 
-	player.damage(bow2);
-	player.damage(sword2);
-	player.damage(potion2);
+	player.damage(bow1, sword2);
+	player.damage(sword1, bow2);
+	player.damage(potion1, potion2);
 
 	// player.take(sword1).damage(player2); не подбирает а держит
 	// sword.damage(player2); триггеры?

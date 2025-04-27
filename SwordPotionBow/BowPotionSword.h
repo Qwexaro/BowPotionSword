@@ -3,17 +3,18 @@
 #include <iostream>
 #include "Interface.h"
 
-class Bow : public ITake, public IDealDamage
+class Bow : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
 public:
 	Bow(std::string name);
 	void use() override;
 	void dealDamage() override;
+	void getDamage() override;
 };
 
 
-class Sword : public ITake, public IDealDamage
+class Sword : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
 
@@ -21,10 +22,11 @@ public:
 	Sword(std::string name);
 	void use() override;
 	void dealDamage() override;
+	void getDamage() override;
 };
 
 
-class Potion : public ITake, public IDealDamage
+class Potion : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
 	bool is_pomegrate;
@@ -32,6 +34,7 @@ public:
 	Potion(std::string name);
 	void use() override;
 	void dealDamage() override;
+	void getDamage() override;
 };
 
 
@@ -43,8 +46,10 @@ public:
 	Player();
 	void use() override;
 	void dealDamage() override;
+//	void getDamage() override;
+
 	Player& take(std::shared_ptr<ITake> takable_item);
-	Player& damage(std::shared_ptr<IDealDamage> attack_item);
+	Player& damage(std::shared_ptr<IDealDamage> attack_item, std::shared_ptr<IGetDamage> get_dmg_item);
 
 	int getHealth() const;
 };
