@@ -6,18 +6,15 @@ Potion::Potion(std::string name) : name{ name }, is_pomegrate{static_cast<bool>(
 
 Sword::Sword(std::string name) : name{name}{}
 
-
 void Bow::getStatus() const
 {
 	std::cout << name;
 }
 
-
 void Player::getStatus() const
 {
 	std::cout << name;
 }
-
 
 void Sword::getStatus() const
 {
@@ -28,8 +25,6 @@ void Potion::getStatus() const
 {
 	std::cout << name;
 }
-
-
 
 void Bow::getDamage()
 {
@@ -73,7 +68,7 @@ void Potion::use()
 
 void Potion::dealDamage()
 {
-	std::cout << "\nЗельеварка активировалась на: " << name << ", со здоровьем: " << std::endl;
+	std::cout << "\nЗельеварка активировалась на: " << name << std::endl;
 }
 
 Player::Player() : name{"sanya"}, health_player{100} {}

@@ -2,7 +2,7 @@
 
 int main()
 {
-	// Матушка земля
+
 	system("chcp 1251");
 	srand(static_cast<int>(time(0)));
 	Player player;
@@ -12,7 +12,7 @@ int main()
 	std::shared_ptr<Sword>sword1 = std::make_shared<Sword>("Платиновый");
 	std::shared_ptr<Potion>potion1 = std::make_shared<Potion>("Невидимый");
 	
-	std::shared_ptr<Bow>bow2 = std::make_shared<Bow>("Вражий золтой");
+	std::shared_ptr<Bow>bow2 = std::make_shared<Bow>("Вражий золотой");
 	std::shared_ptr<Sword>sword2 = std::make_shared<Sword>("Вражий стар платинум");
 	std::shared_ptr<Potion>potion2 = std::make_shared<Potion>("Вражья невидимость");
 
@@ -26,10 +26,6 @@ int main()
 
 	player.take(enemy);
 	player.damage(sword1, enemy);
-
-	// player.take(sword1).damage(player2); не подбирает а держит
-	// sword.damage(player2); триггеры?
-	// player.damage(Sword(player2)); по факту попало под меч
 
 	return 0;
 }
