@@ -8,6 +8,7 @@ class Bow : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
 	int health;
+	bool can_take;
 public:
 	Bow(std::string name);
 	void use() override;
@@ -21,6 +22,7 @@ class Sword : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
 	int health;
+	bool can_take;
 public:
 	Sword(std::string name);
 	void use() override;
@@ -34,6 +36,7 @@ class Potion : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
 	int health;
+	bool can_take;
 public:
 	Potion(std::string name);
 	void use() override;

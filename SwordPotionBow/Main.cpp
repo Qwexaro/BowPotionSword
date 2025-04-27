@@ -6,22 +6,28 @@ int main()
 	srand(static_cast<int>(time(0)));
 	Player player;
 
-	std::shared_ptr<Player>enemy = std::make_shared<Player>();
-	std::shared_ptr<Bow>bow1 = std::make_shared<Bow>("Золотой");
-	std::shared_ptr<Sword>sword1 = std::make_shared<Sword>("Платиновый");
-	std::shared_ptr<Potion>potion1 = std::make_shared<Potion>("Невидимый");
-
-	std::shared_ptr<Bow>bow2 = std::make_shared<Bow>("Вражий золтой");
-	std::shared_ptr<Sword>sword2 = std::make_shared<Sword>("Вражий стар платинум");
-	std::shared_ptr<Potion>potion2 = std::make_shared<Potion>("Вражья невидимость");
+	std::shared_ptr<Player>enemy = std::make_shared<Player>("Vadim");
+	std::shared_ptr<Bow>bow1 = std::make_shared<Bow>("Wind");
+	std::shared_ptr<Sword>sword1 = std::make_shared<Sword>("Sword Star Platinum");
+	std::shared_ptr<Potion>potion1 = std::make_shared<Potion>("Energ");
 
 	player.take(bow1);
 	player.take(sword1);
 	player.take(potion1);
 
-	player.damage(bow1, sword2);
-	player.damage(sword1, bow2);
-	player.damage(potion1, potion2);
+	player.damage(bow1, sword1);
+	player.damage(sword1, bow1);
+	player.damage(potion1, potion1);
+
+
+	player.damage(bow1, sword1);
+	player.damage(sword1, bow1);
+	player.damage(potion1, potion1);
+
+	player.damage(bow1, sword1);
+	player.damage(sword1, bow1);
+	player.damage(potion1, potion1);
 
 	player.take(enemy);
+
 }
