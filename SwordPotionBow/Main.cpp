@@ -2,34 +2,26 @@
 
 int main()
 {
-	// Матушка земля
 	system("chcp 1251");
-	srand(static_cast<int>(time(0)));
-	Player player;
 	
-	std::shared_ptr<Player>enemy = std::make_shared<Player>();
-	std::shared_ptr<Bow>bow1 = std::make_shared<Bow>("Золотой");
-	std::shared_ptr<Sword>sword1 = std::make_shared<Sword>("Платиновый");
-	std::shared_ptr<Potion>potion1 = std::make_shared<Potion>("Невидимый");
+	srand(time(int(0)));
+
+	Player player("Jotaro Tokisky");
+
+	std::shared_ptr<Player>ptr_player = std::make_shared<Player>("Vadim");
+
+	std::shared_ptr<Sword>sword_vadima = std::make_shared<Sword>("Vadimsky Sword");
+	std::shared_ptr<Sword>sword_jotaro = std::make_shared<Sword>("Sword Jotaro");
+
+
+	std::shared_ptr<Bow>bow1 = std::make_shared<Bow>("Da");
+	player.getStatus();
+
+	player.take(ptr_player);
+	player.take(sword_jotaro);
+	player.take(sword_vadima);
+
+	player.damage(sword_jotaro, sword_vadima);
 	
-	std::shared_ptr<Bow>bow2 = std::make_shared<Bow>("Вражий золтой");
-	std::shared_ptr<Sword>sword2 = std::make_shared<Sword>("Вражий стар платинум");
-	std::shared_ptr<Potion>potion2 = std::make_shared<Potion>("Вражья невидимость");
-
-	player.take(bow1);
-	player.take(sword1);
-	player.take(potion1);
-
-	player.damage(bow1, sword2);
-	player.damage(sword1, bow2);
-	player.damage(potion1, potion2);
-
-	player.take(enemy);
-	player.damage(sword1, enemy);
-
-	// player.take(sword1).damage(player2); не подбирает а держит
-	// sword.damage(player2); триггеры?
-	// player.damage(Sword(player2)); по факту попало под меч
-
 	return 0;
 }

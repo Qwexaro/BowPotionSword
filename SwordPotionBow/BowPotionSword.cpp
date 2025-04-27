@@ -1,15 +1,15 @@
-#include "BowPotionSword.h"
+ï»¿#include "BowPotionSword.h"
 
-Bow::Bow(std::string name) : name{name}{}
+Bow::Bow(std::string name) : name{ name }, health{60} {}
 
-Potion::Potion(std::string name) : name{ name }, is_pomegrate{static_cast<bool>(rand()%2)} {}
+Potion::Potion(std::string name) : name{ name }, health{30} {}
 
-Sword::Sword(std::string name) : name{name}{}
+Sword::Sword(std::string name) : name{ name }, health{95} {}
 
 
 void Bow::getStatus() const
 {
-	std::cout << name;
+	std::cout << name << ", Ñ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¼ Ð·Ð´Ð¾Ñ€Ð¾Ð²ÑŒÐµÐ¼: " << health;
 }
 
 
@@ -21,67 +21,92 @@ void Player::getStatus() const
 
 void Sword::getStatus() const
 {
-	std::cout << name;
+	std::cout << name << ", Ñ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¼ Ð·Ð´Ð¾Ñ€Ð¾Ð²ÑŒÐµÐ¼: " << health;
 }
 
 void Potion::getStatus() const
 {
-	std::cout << name;
+	std::cout << name << ", Ñ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¼ Ð·Ð´Ð¾Ñ€Ð¾Ð²ÑŒÐµÐ¼: " << health;
 }
-
-
 
 void Bow::getDamage()
 {
-	std::cout << "\nëóê ñëîìàëñÿ";
+	// Ð»ÑƒÐº Ð·Ð°ÐºÐ¾Ð»Ð´Ð¾Ð²Ð°Ð½ ÐºÐ¸Ñ‚Ð°Ð¹Ñ†Ð°Ð¼Ð¸
+
+	if (health > 0) 
+	{
+		health -= health;
+		if (health < 0) health = 0;
+		std::cout << "ÐšÐ¸Ñ‚Ð°Ð¹ÑÐºÐ¸Ðµ Ð´ÑƒÑ…Ð¸ Ð¿Ð¾ÐºÐ¸Ð½ÑƒÐ»Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð»ÑƒÐº."; 
+	} 
+	else
+	{
+		std::cout << "\nÐ½Ð¾ Ð¾Ð±Ð½Ð°Ñ€ÑƒÐ¶Ð¸Ð²Ð°ÐµÑ‚Ðµ Ñ‡Ñ‚Ð¾ Ð»ÑƒÐº " << name << " ÑƒÐ¶Ðµ ÑÐ»Ð¾Ð¼Ð°Ð½.";
+	}
 }
 
 void Sword::getDamage()
 {
-	std::cout << "\nÌå÷ü ñëîìàëñÿ.";
+	if (health > 0)
+	{
+		health -= rand()%30+1;
+		if (health < 0) health = 0;
+	}
+	else
+	{
+		std::cout << "\nÐ½Ð¾ Ð¾Ð±Ð½Ð°Ñ€ÑƒÐ¶Ð¸Ð²Ð°ÐµÑ‚Ðµ Ñ‡Ñ‚Ð¾ Ð¼ÐµÑ‡ " << name << " ÑƒÐ¶Ðµ ÑÐ»Ð¾Ð¼Ð°Ð½.";
+	}
 }
 
 void Potion::getDamage()
 {
-	std::cout << "\nÇåëüå ðàçëåòåëîñü íà îñêîëêè.";
+	if (health > 0)
+	{
+		health -= rand() % 20 + 1;
+		if (health < 0) health = 0;
+	}
+	else
+	{
+		std::cout << "\nÐ½Ð¾ Ð¾Ð±Ð½Ð°Ñ€ÑƒÐ¶Ð¸Ð²Ð°ÐµÑ‚Ðµ Ñ‡Ñ‚Ð¾ Ð¼ÐµÑ‡ " << name << " ÑƒÐ¶Ðµ ÑÐ»Ð¾Ð¼Ð°Ð½.";
+	}
 }
 
 void Bow::use()
 {
-	std::cout << "\nÂû ïîäîáðàëè ëóê âàðåííûé èç: " << name << std::endl;
+	std::cout << "\nÐ’Ñ‹ Ð¿Ð¾Ð´Ð¾Ð±Ñ€Ð°Ð»Ð¸ Ð»ÑƒÐº Ð²Ð°Ñ€ÐµÐ½Ð½Ñ‹Ð¹ Ð¸Ð·: " << name << " ÑÐ¾ Ð·Ð´Ð¾Ñ€Ð¾Ð²ÑŒÐµÐ¼: " << health << std::endl;
 }
 
 void Bow::dealDamage()
 {
-	std::cout << "\nÂû àòàêóåòå: ";
+	std::cout << "\nÐ¡Ñ‚Ñ€ÐµÐ»ÑÑŽÑ‰Ð¸Ð¼ Ð»ÑƒÐºÐ¾Ð¼ Ð½Ð° ÑÐºÐ¾Ð²Ð¾Ñ€Ð¾Ð´Ðµ Ð²Ñ‹ Ð°Ñ‚Ð°ÐºÑƒÐµÑ‚Ðµ: ";
 }
 
 void Sword::use()
 {
-	std::cout << "\nÂû ïîäîáðàëè ìå÷: " << name << std::endl;
+	std::cout << "\nÐ’Ñ‹ Ð¿Ð¾Ð´Ð¾Ð±Ñ€Ð°Ð»Ð¸ Ð¼ÐµÑ‡ Ð¸Ð·: " << name << " ÑÐ¾ Ð·Ð´Ð¾Ñ€Ð¾Ð²ÑŒÐµÐ¼: " << health << std::endl;
 }
 
 void Sword::dealDamage()
 {
-	std::cout << "\nÌîùíûì âçìàõîì ìå÷îì âû àòàêóåòå: ";
+	std::cout << "ÐœÐ¾Ñ‰Ð½Ñ‹Ð¼ Ð²Ð·Ð¼Ð°Ñ…Ð¾Ð¼ Ð¼ÐµÑ‡Ð¾Ð¼ Ð²Ñ‹ Ð°Ñ‚Ð°ÐºÑƒÐµÑ‚Ðµ: ";
 }
 
 void Potion::use()
 {
-	std::cout << "\nÇåëüå âàðåííîå èç: " << name << std::endl;
+	std::cout << "\nÐ’Ñ‹ Ð¿Ð¾Ð´Ð¾Ð±Ñ€Ð°Ð»Ð¸ Ð·ÐµÐ»ÑŒÐµ Ð¸Ð·: " << name << " ÑÐ¾ Ð·Ð´Ð¾Ñ€Ð¾Ð²ÑŒÐµÐ¼: " << health << std::endl;
 }
 
 void Potion::dealDamage()
 {
-	std::cout << "\nÇåëüåâàðêà àêòèâèðîâàëàñü íà: " << name << ", ñî çäîðîâüåì: " << std::endl;
+	std::cout << "Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑ Ð·ÐµÐ»ÑŒÐµÐ²Ð°Ñ€ÐºÑƒ: " << name << ", Ð²Ñ‹ Ð°Ñ‚Ð°ÐºÑƒÐµÑ‚Ðµ Ð·Ð´Ð¾Ñ€Ð¾Ð²ÑŒÐµ Ð¸Ð³Ñ€Ð¾ÐºÐ°: ";
 }
 
-Player::Player() : name{"sanya"}, health_player{100} {}
+Player::Player() : name{"sanya"} {}
+Player::Player(std::string name) : name{name}{}
 
 void Player::use()
 {
-	std::cout << "\nÈãðîê ñ èìåíåì " << name << " è çäîðîâüåì " 
-		<< getHealth() << " íå îäîáðÿåò âàøè äåéñòâèÿ è íå ïîäáèðàåòñÿ" << std::endl;
+	std::cout << "\nÐ˜Ð³Ñ€Ð¾Ðº Ñ Ð¸Ð¼ÐµÐ½ÐµÐ¼ " << name << " Ð½Ðµ Ð¾Ð´Ð¾Ð±Ñ€ÑÐµÑ‚ Ð²Ð°ÑˆÐ¸ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ Ð¸ Ð½Ðµ Ð¿Ð¾Ð´Ð±Ð¸Ñ€Ð°ÐµÑ‚ÑÑ" << std::endl;
 }
 
 Player& Player::take(std::shared_ptr<ITake>takable_item)
@@ -97,17 +122,7 @@ Player& Player::damage(std::shared_ptr<IDealDamage> attack_item, std::shared_ptr
 	return *this;
 }
 
-int Player::getHealth() const
-{
-	return health_player;
-}
-
 void Player::dealDamage()
 {
-	std::cout << "òóò ïîêà íè÷åãî íåò" << std::endl;
-}
-
-void Player::getDamage()
-{
-	std::cout << "Âû óáèëè èãðîêà" << std::endl;
+	std::cout << "Ñ‚ÑƒÑ‚ Ð¿Ð¾ÐºÐ° Ð½Ð¸Ñ‡ÐµÐ³Ð¾ Ð½ÐµÑ‚" << std::endl;
 }

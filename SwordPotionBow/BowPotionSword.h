@@ -1,11 +1,13 @@
 #pragma once
 
 #include <iostream>
+#include <ctime>
 #include "Interface.h"
 
 class Bow : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
+	int health;
 public:
 	Bow(std::string name);
 	void use() override;
@@ -18,7 +20,7 @@ public:
 class Sword : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
-
+	int health;
 public:
 	Sword(std::string name);
 	void use() override;
@@ -31,7 +33,7 @@ public:
 class Potion : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
-	bool is_pomegrate;
+	int health;
 public:
 	Potion(std::string name);
 	void use() override;
@@ -41,19 +43,16 @@ public:
 };
 
 
-class Player : public ITake, public IDealDamage, public IGetDamage
+class Player : public ITake, public IDealDamage
 {
 	std::string name;
-	int health_player;
 public:
 	Player();
+	Player(std::string name);
 	void use() override;
 	void dealDamage() override;
-	void getDamage() override;
-	void getStatus() const override;
+	void getStatus() const;
 
 	Player& take(std::shared_ptr<ITake> takable_item);
 	Player& damage(std::shared_ptr<IDealDamage> attack_item, std::shared_ptr<IGetDamage> get_dmg_item);
-
-	int getHealth() const;
 };
