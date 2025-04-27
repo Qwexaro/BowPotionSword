@@ -38,5 +38,5 @@ class Player
 	std::string name;
 public:
 	Player& take(std::shared_ptr<ITake>takable_item);
-	Player& damage(std::shared_ptr<IAttack>attack_item);
+	Player& damage(std::shared_ptr<IAttack>attack_item, std::shared_ptr<IGetAttack>get_dmg_item);
 };
