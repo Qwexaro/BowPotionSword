@@ -2,7 +2,7 @@
 
 Bow::Bow(std::string name) : name{name}{}
 
-Potion::Potion(std::string name) : name{ name }, is_pomegrate{static_cast<bool>(rand()%2)} {}
+Potion::Potion(std::string name) : name{ name } {}
 
 Sword::Sword(std::string name) : name{name}{}
 
@@ -28,17 +28,17 @@ void Potion::getStatus() const
 
 void Bow::getDamage()
 {
-	std::cout << "\nлук сломался";
+	std::cout << "\nЛук из "<< name << " сломался." << std::endl;
 }
 
 void Sword::getDamage()
 {
-	std::cout << "\nМечь сломался.";
+	std::cout << "\nМечь из "<< name <<  " сломался." << std::endl;
 }
 
 void Potion::getDamage()
 {
-	std::cout << "\nЗелье разлетелось на осколки.";
+	std::cout << "\nЗелье из "<< name << " разлетелось на осколки.";
 }
 
 void Bow::use()
@@ -48,7 +48,7 @@ void Bow::use()
 
 void Bow::dealDamage()
 {
-	std::cout << "\nВы атакуете: ";
+	std::cout << "\nЖаря лук на сковороде вы атакуете: ";
 }
 
 void Sword::use()
@@ -68,10 +68,10 @@ void Potion::use()
 
 void Potion::dealDamage()
 {
-	std::cout << "\nЗельеварка активировалась на: " << name << std::endl;
+	std::cout << "\nЗельеварка из " << name << " активировалась на : ";
 }
 
-Player::Player() : name{"sanya"}, health_player{100} {}
+Player::Player() : name{"Sanya"}, health_player{100} {}
 
 void Player::use()
 {
@@ -104,5 +104,5 @@ void Player::dealDamage()
 
 void Player::getDamage()
 {
-	std::cout << "Вы убили игрока" << std::endl;
+	std::cout << "\nВы убили игрока" << std::endl;
 }

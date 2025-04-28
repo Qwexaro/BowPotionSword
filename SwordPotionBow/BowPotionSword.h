@@ -31,7 +31,6 @@ public:
 class Potion : public ITake, public IDealDamage, public IGetDamage
 {
 	std::string name;
-	bool is_pomegrate;
 public:
 	Potion(std::string name);
 	void use() override;
