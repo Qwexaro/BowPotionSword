@@ -33,7 +33,7 @@ void Bow::getDamage()
 
 void Sword::getDamage()
 {
-	std::cout << "\nМечь из "<< name <<  " сломался." << std::endl;
+	std::cout << "\nМеч из "<< name <<  " сломался." << std::endl;
 }
 
 void Potion::getDamage()
