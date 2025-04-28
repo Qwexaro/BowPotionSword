@@ -8,7 +8,7 @@ class Bow : public ITake, public IDealDamage, public IGetDamage
 	std::string name;
 public:
 	Bow(std::string name);
-	void use() override;
+	void take() override;
 	void dealDamage() override;
 	void getDamage() override;
 	void getStatus() const override;
@@ -21,7 +21,7 @@ class Sword : public ITake, public IDealDamage, public IGetDamage
 
 public:
 	Sword(std::string name);
-	void use() override;
+	void take() override;
 	void dealDamage() override;
 	void getDamage() override;
 	void getStatus() const override;
@@ -33,7 +33,7 @@ class Potion : public ITake, public IDealDamage, public IGetDamage
 	std::string name;
 public:
 	Potion(std::string name);
-	void use() override;
+	void take() override;
 	void dealDamage() override;
 	void getDamage() override;
 	void getStatus() const override;
@@ -46,7 +46,7 @@ class Player : public ITake, public IDealDamage, public IGetDamage
 	int health_player;
 public:
 	Player();
-	void use() override;
+	void take() override;
 	void dealDamage() override;
 	void getDamage() override;
 	void getStatus() const override;

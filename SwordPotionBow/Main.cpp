@@ -2,7 +2,6 @@
 
 int main()
 {
-
 	system("chcp 1251");
 	srand(static_cast<int>(time(0)));
 	Player player;
@@ -23,6 +22,8 @@ int main()
 	player.damage(bow1, sword2);
 	player.damage(sword1, bow2);
 	player.damage(potion1, potion2);
+
+	player.damage(potion1, potion1); // Водичку надо утилизировать 
 
 	player.take(enemy);
 	player.damage(bow1, enemy);

@@ -41,7 +41,7 @@ void Potion::getDamage()
 	std::cout << "\nЗелье из "<< name << " разлетелось на осколки.";
 }
 
-void Bow::use()
+void Bow::take()
 {
 	std::cout << "\nВы подобрали лук варенный из: " << name << std::endl;
 }
@@ -51,7 +51,7 @@ void Bow::dealDamage()
 	std::cout << "\nЖаря лук на сковороде вы атакуете: ";
 }
 
-void Sword::use()
+void Sword::take()
 {
 	std::cout << "\nВы подобрали меч: " << name << std::endl;
 }
@@ -61,7 +61,7 @@ void Sword::dealDamage()
 	std::cout << "\nМощным взмахом мечом вы атакуете: ";
 }
 
-void Potion::use()
+void Potion::take()
 {
 	std::cout << "\nЗелье варенное из: " << name << std::endl;
 }
@@ -71,9 +71,9 @@ void Potion::dealDamage()
 	std::cout << "\nЗельеварка из " << name << " активировалась на : ";
 }
 
-Player::Player() : name{"Sanya"}, health_player{100} {}
+Player::Player() : name{"Sanya"}, health_player{rand()%100+1} {}
 
-void Player::use()
+void Player::take()
 {
 	std::cout << "\nИгрок с именем " << name << " и здоровьем " 
 		<< getHealth() << " не одобряет ваши действия и не подбирается" << std::endl;
@@ -81,7 +81,7 @@ void Player::use()
 
 Player& Player::take(std::shared_ptr<ITake>takable_item)
 {
-	takable_item->use(); return *this;
+	takable_item->take(); return *this;
 }
 
 Player& Player::damage(std::shared_ptr<IDealDamage> attack_item, std::shared_ptr<IGetDamage> get_dmg_item)
@@ -99,7 +99,7 @@ int Player::getHealth() const
 
 void Player::dealDamage()
 {
-	std::cout << "тут пока ничего нет" << std::endl;
+	std::cout << "\nтут пока ничего нет" << std::endl;
 }
 
 void Player::getDamage()
